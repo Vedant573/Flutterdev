@@ -66,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
                   extraInfo(size: size,
                     icon: Icons.percent,
                     name: 'Humidity',
-                    value: '5%',
+                    value: '6%',
                   ),
                 ],
               ))
