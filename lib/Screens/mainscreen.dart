@@ -19,30 +19,32 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           Positioned(
               top: size.height*0.1,
-              child: Text('Location', style: TextStyle(
+              child: Text('${constants.apiInstance.city}', style: TextStyle(
                 color: constants.textPrimary,
                 decoration: TextDecoration.none,
               ),)),
 
           Positioned(
               top: size.height*0.15,
-              child: Text('Date', style: TextStyle(
+              child: Text(constants.apiInstance.date,
+                style: TextStyle(
                 color: constants.textPrimary,
                 decoration: TextDecoration.none,
-                fontSize: 45
+                fontSize: 35
               ),)),
           Positioned(
               top: size.height*0.3,
-              child: Container(
-            width: size.width*0.6,
-            height: size.height*0.23,
-            color: Colors.greenAccent,
-          )),
+              child: SizedBox(
+                width: size.width*0.6,
+                height: size.height*0.23,
+                child: Image.network('http://openweathermap.org/img/wn/${constants.apiInstance.icon}@2x.png',
+                scale: 0.2,),
+              )),
           Positioned(
               top: size.height*0.6,
               child: Text(
 
-            '24',
+            '${constants.apiInstance.temp}°C',
             style: TextStyle(
               fontSize: size.width*0.16,
               decoration: TextDecoration.none,
@@ -56,17 +58,17 @@ class _MainScreenState extends State<MainScreen> {
                   extraInfo(size: size,
                     icon: Icons.thermostat,
                     name: 'MaxTemp',
-                    value: '23°C',
+                    value: '${constants.apiInstance.maxTemp}°C',
                   ),
                   extraInfo(size: size,
                     icon: Icons.air_outlined,
                     name: 'WindSpeed',
-                    value: '2 m/s',
+                    value: '${constants.apiInstance.airSpeed}',
                   ),
                   extraInfo(size: size,
                     icon: Icons.percent,
                     name: 'Humidity',
-                    value: '6%',
+                    value: '${constants.apiInstance.humidity}%',
                   ),
                 ],
               ))
@@ -75,6 +77,8 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
+
+
 
 class extraInfo extends StatelessWidget {
   extraInfo({
